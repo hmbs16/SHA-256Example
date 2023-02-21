@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Text Box Example</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
+	<style>
+		h1 {
+            font: 400;
+			color: blue;
+			font-size: 24px;
+		}
+		p {
+			font-size: 16px;
+		}
+		input[type="text"] {
+			padding: 5px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			font-size: 16px;
+		}
+		#display {
+			font-size: 16px;
+			margin-top: 10px;
+			color: red;
+			font-weight: bold;
+            
+		}
+	</style>
+</head>
+<body>
+	<h1>Text Box Example</h1>
+	<p>Type something in the text box and see its SHA-256 hash displayed on the webpage:</p>
+	<input type="text" id="textbox">
+	<p id="display"></p>
+
+	<script>
+		// Get the text box element and the display element
+		const textbox = document.getElementById("textbox");
+		const display = document.getElementById("display");
+
+		// Add an event listener to the text box for when the user types in it
+		textbox.addEventListener("input", function() {
+			// Get the value of the text box and hash it using SHA-256
+			const text = textbox.value;
+			const hash = sha256(text);
+
+			// Set the hash as the text of the display element
+			display.textContent = hash;
+		});
+	</script>
+</body>
+</html>
+
